@@ -15,8 +15,18 @@ const movies = [
 
 function App() {
 
-
   const [selected, setSelected] = useState("")
+  const [filteredMovies, setFilteredMovies] = useState(movies);
+  const [search, setSearch] = useState("");
+
+
+  //usiamo use effect per aggiornare al cambio di selected
+  useEffect(() => {
+    if (!selected) {
+      setFilteredMovies(movies);
+    } else
+      setFilteredMovies(movies.filter((m) => m.genre.toLocaleLowerCase() === selected.toLocaleLowerCase()))
+  }, [selected])
 
   return (
     <>
@@ -34,14 +44,15 @@ function App() {
           <option value="azione">Azione</option>
           <option value="fantascienza">Fantascienza</option>
           <option value="thriller">Thriller</option>
-          <option value="romantici">Romantici</option>
+          <option value="romantico">Romantici</option>
         </select>
       </div>
+
       {/* L I S T A  F I L M */}
       <p >Elenco film:</p>
 
       <ul className="list-group">
-        {movies.map((movie, index) => (
+        {filteredMovies.map((movie, index) => (
           <li
             key={index}
             className='list-group-item'
@@ -58,4 +69,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
