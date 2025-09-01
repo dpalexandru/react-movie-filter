@@ -12,3 +12,9 @@
 .container-select p {
     margin-right: 30px;
 }
+
+.aggiungi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

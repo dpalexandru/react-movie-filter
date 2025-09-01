@@ -98,6 +98,25 @@ function App() {
         ))}
 
       </ul>
+
+
+      {/* A G G I U N G I  */}
+      <form className="mt-3 aggiungi">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Aggiungi titolo"
+          value={""}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        <button type="button" className="btn btn-primary">
+          Aggiungi
+        </button>
+      </form>
+
+
+
     </>
   )
 }
