@@ -3,3 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.form-select {
+    width: 300px;
+}
+
+.container-select p {
+    margin-right: 30px;
+}

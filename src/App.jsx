@@ -15,9 +15,31 @@ const movies = [
 
 function App() {
 
+
+  const [selected, setSelected] = useState("")
+
   return (
     <>
       <h1>Lista dei film da vedere una volta nella vita</h1>
+
+      {/* S E L E C T  G E N R E  */}
+      <div className="container-select">
+        <p >Segli un genere:</p>
+        <select
+          className='form-select mb-5'
+          value={selected}
+          onChange={(e) => setSelected(e.target.value)}
+        >
+          <option value="">Tutti</option>
+          <option value="azione">Azione</option>
+          <option value="fantascienza">Fantascienza</option>
+          <option value="thriller">Thriller</option>
+          <option value="romantici">Romantici</option>
+        </select>
+      </div>
+      {/* L I S T A  F I L M */}
+      <p >Elenco film:</p>
+
       <ul className="list-group">
         {movies.map((movie, index) => (
           <li
