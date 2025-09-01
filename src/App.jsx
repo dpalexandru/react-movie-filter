@@ -28,6 +28,28 @@ function App() {
       setFilteredMovies(movies.filter((m) => m.genre.toLocaleLowerCase() === selected.toLocaleLowerCase()))
   }, [selected])
 
+  // usiamo use effect per aggiornare all'inserimento nella search
+  useEffect(() => {
+    let base;
+    if (!selected) {
+      base = movies;
+    } else {
+      base = movies.filter(
+        (m) => m.genre.toLowerCase() === selected.toLowerCase()
+      );
+    }
+
+    let result;
+    if (!search) {
+      result = base;
+    } else {
+      result = base.filter((m) =>
+        m.title.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    setFilteredMovies(result);
+  }, [search, selected]);
+
   return (
     <>
       <h1>Lista dei film da vedere una volta nella vita</h1>
@@ -48,6 +70,19 @@ function App() {
         </select>
       </div>
 
+      {/* C A M P O  S E A R C H  */}
+      <p >Cerca per titolo:</p>
+      <div className="mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Cerca per titolo..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+
       {/* L I S T A  F I L M */}
       <p >Elenco film:</p>
 
@@ -63,8 +98,6 @@ function App() {
         ))}
 
       </ul>
-
-
     </>
   )
 }

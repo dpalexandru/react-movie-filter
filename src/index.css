@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-.form-select {
+.form-select,
+.form-control {
     width: 300px;
 }
 
